@@ -58,7 +58,19 @@ const firebaseConfig = {
   })
   }
 
-  
+  //Login user
+  function login() {
+    email = document.getElementById('email_login')
+    password = document.getElementById('pwd_login')
+
+    if (validate_email(email_login) == false || validate_password(pwd_login) == false) {
+        alert('Email or password is wrong!')
+    }
+
+    auth.signInWithEmailAndPassword()
+  }
+
+
   function validate_email() {
     expression = /^[^@]+@\w+(\.\w+)+\w$/.test(str);
     if (expression.text(email) == true) {
