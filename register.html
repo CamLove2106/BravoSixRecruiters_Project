@@ -26,23 +26,23 @@
     <div class="center">
         <h1>Sign Up</h1>
         <form method="post">
-            <div class="txt_field" id="first_name">
-                <input type="text" placeholder="Full Name" required>
+            <div class="txt_field">
+                <input type="text" id="full_name" placeholder="Full Name">
                 <i class="fa-solid fa-user"></i>
                 <span></span>
             </div>
             <div class="txt_field">
-                <input type="email" placeholder="Email Address" required>
+                <input type="email" id="emailAddress" placeholder="Email Address" >
                 <i class="fa-regular fa-envelope"></i>
                 <span></span>
             </div>
             <div class="txt_field">
-                <input type="password" placeholder="Password" required>
+                <input type="password" id="pwd" placeholder="Password" >
                 <i class="fa-solid fa-lock"></i>
                 <span></span>
             </div>
             <div class="txt_field">
-                <input type="password" placeholder="Re-Enter Password" required>
+                <input type="password" id="pwdRepeat" placeholder="Re-Enter Password" >
                 <i class="fa-solid fa-lock"></i>
                 <span></span>
             </div>
@@ -62,6 +62,25 @@
             <small>&copy; 2023, Cameron Love. <a href="mailto:C.love1@uni.brighton.ac.uk">Email Cameron Love</a></small>
         </nav>
     </footer>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+    </script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+    </script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+    </script>
+
+
+    <script src="index.js"></script>
 
 </body><!--Close 'body' -->
 
