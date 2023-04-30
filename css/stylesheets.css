@@ -1,0 +1,492 @@
+/*---------------------------
+Base styles for all screen widths
+----------------------------*/
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
+    height: 100vh;
+    overflow: hidden;
+}
+
+#mecontainer {
+    width: 100%;
+    height: 1080px;
+    padding-top: 50px;
+    background: #cecefe;
+}
+
+#supportcontainer {
+    width: 100%;
+    height: 1080px;
+    padding-top: 50px;
+    background: #fecefe;
+}
+
+
+#wrapper {
+    max-width: 70em;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+}
+
+h1 {
+    font-size: 2.25em;
+}
+/* 36px */
+h2 {
+    font-size: 1.75em;
+}
+/* 28px */
+h3 {
+    font-size: 1.375em;
+}
+/* 22px */
+h4 {
+    font-size: 1.125em;
+}
+/* 18px */
+h5 {
+    font-size: 1em;
+}
+/* 16px */
+h6 {
+    font-size: .875em;
+}
+/* 14px */
+
+p {
+    line-height: 1.5;
+}
+
+small {
+    font-size: .75em; /* 12px*/
+}
+
+blockquote {
+    padding: 1em 2em 1em 2em;
+    margin: 0 0 2em 0;
+    border-left: 5px solid #eee;
+}
+
+table {
+    margin-right: 3em;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-top: 1px solid #ddd;
+    max-width: 35em;
+}
+
+/**The nth child pseudo-class selects every odd row of the table to apply a background colour
+*Reference - https://developer.mozilla.org/en-US/docs/Web/CSS/%3Anth-child
+*/
+tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 204, .1);
+}
+
+th, td {
+    font-size: 90%;
+    padding: .2em 1em .2em 1em;
+    border: 1px solid #555;
+    vertical-align: top;
+    text-align: left;
+    white-space: nowrap;
+}
+
+    td:empty {
+        background-image: url(images/td_pattern.png);
+        background-repeat: repeat;
+    }
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1.2em 0 .5em 0;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:link {
+        color: #031EFF
+    }
+
+    a:visited {
+        color: #031EFF
+    }
+
+    a:hover {
+        color: #3300FF;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: #336;
+    }
+
+    a:focus {
+        color: #336;
+    }
+
+    a[href^="#top"] {
+        font-size: .75em;
+        background: url(../learningJournal/images/up.png) no-repeat left bottom;
+        padding-left: 1.4em;
+    }
+
+footer a:link {
+    color: #fff;
+}
+
+/* -----------------------
+Grid layout
+------------------------*/
+
+.banner {
+    grid-area: banner;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+nav {
+    grid-area: nav;
+}
+
+table {
+    grid-area: table;
+}
+
+main {
+    grid-area: main;
+}
+
+aside {
+    grid-area: aside;
+}
+
+footer {
+    grid-area: footer;
+}
+
+#wrapper {
+    display: grid;
+    grid-gap: 0;
+    grid-template-areas:
+        "banner"
+        "menu"
+        "nav"
+        "table"
+        "main"
+        "aside"
+        "footer";
+}
+
+@media (min-width: 50em) {
+    #wrapper {
+        grid-template-columns: 3fr 6fr;
+        grid-template-areas:
+            "banner  banner"
+            "menu  menu"
+            "nav  table"
+            "aside  main"
+            "footer  footer";
+    }
+}
+
+@media (min-width: 60em) {
+    #wrapper {
+        grid-template-columns: 3fr 5fr 3fr;
+        grid-template-areas:
+            "banner  banner  banner"
+            "menu  menu  menu"
+            "nav  table  aside"
+            "nav  main  aside"
+            "footer  footer  footer";
+    }
+}
+
+/* --------------------------
+Layout Styles - mobile first
+----------------------------*/
+.banner {
+    color: #fff;
+    background: #909090;
+    padding: 1em 0 1em 1.25em;
+}
+
+.menu {
+    background: #555;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav h3, aside h3 {
+    margin-left: .6em;
+}
+
+main {
+    margin: 0 1em 0 1em;
+}
+
+footer {
+    color: #fff;
+    background: #555;
+    padding: 1em 1.25em 1em 1.25em;
+}
+
+/**Makes images 100% width of containing element i.e. flexible
+*Remove image width and height attributes from html!
+*/
+img {
+    max-width: 100%;
+}
+/* -----------------------------------------------
+Menu Navigation - vertical layout for smaller screens
+--------------------------------------------------*/
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu li {
+    display: block; /*display in a vertical column*/
+    margin: 0;
+}
+
+.media {
+    margin: 0;
+    padding: 0;
+}
+
+    .media li {
+        margin: 0;
+        padding: 0;
+    }
+
+.menu a {
+    display: block;
+    padding: .7em 1.25em .7em 1.25em;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+}
+
+    .menu a:link {
+        color: #fff;
+    }
+
+    .menu a:visited {
+        color: #DFDFDF;
+    }
+
+    .menu a:focus {
+        color: #C00;
+    }
+
+    .menu a:hover {
+        color: #DFDFDF;
+    }
+
+    .menu a:active {
+        color: #C00;
+    }
+/* ------------------------------
+Tutorial cards using flexbox
+---------------------------------*/
+
+.instructions {
+    margin: 2em 0 0 1.25em;
+}
+
+    .instructions h3, aside h3 {
+        text-transform: uppercase;
+        color: #808080;
+        font-weight: bold;
+    }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+}
+
+.card-content {
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #b8860b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 1.25em 1.25em 0.3em 0;
+    padding: 1em;
+}
+
+    .card-content h4 {
+        text-align: center;
+        color: #808080;
+        margin-top: .5em;
+    }
+
+    .card-content img {
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 3px 0 #ccc;
+        margin-bottom: 0.7em;
+    }
+
+    .card-content p {
+        line-height: 1.3;
+        margin: 0;
+    }
+
+img {
+    width: 100%;
+}
+
+/*640 px - tablet portrait - 2 columns*/
+@media screen and (min-width: 35em) {
+    .card {
+        width: 50%;
+    }
+}
+
+/*960 px* - tablet landscape and above - 3 columns*/
+@media screen and (min-width: 60em) {
+    .card {
+        width: 33.33%;
+    }
+}
+
+
+/* ------------------------------
+Flexible video
+---------------------------------*/
+
+.video-wrapper {
+    margin: 1em;
+}
+
+iframe {
+    width: 100%;
+    height: auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /*16:9 */
+    height: 0;
+}
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+/* ----------------------------------------------------
+Wider screens - i.e. desktop, laptop, tablet landscape
+-------------------------------------------------------*/
+
+@media (min-width: 50em) {
+    .banner {
+        padding: 1em 1.25em 10em 1.25em;
+    }
+
+    .menu {
+        padding: 1em 3em 1em 3em;
+    }
+
+    footer {
+        padding: 2em 3em 2em 3em;
+    }
+
+    .menu li {
+        display: inline;
+        margin: 0 1em 0 0;
+    }
+
+    .menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .menu a {
+        display: inline;
+        padding: 0;
+        border-bottom: 0;
+    }
+
+    aside {
+        float: right;
+        width: 25%;
+    }
+
+    .video-wrapper {
+        float: left;
+        width: 65%;
+    }
+
+    /* ----------------------------------------------------
+Mobile screens - portrait
+-------------------------------------------------------*/
+    /*Timtable not displayed on small width screens*/
+
+    @media (max-width: 35em) {
+        table {
+            display: none;
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+
+    /*float/clear classes */
+    .fltrt { /* this class can be used to float an element e.g. image right in the page. The floated element must precede the element it should be next to on the page. */
+        float: right;
+        margin-left: .5em;
+    }
+
+    .fltlt { /* this class can be used to float an element e.g. image left in the page. The floated element must precede the element it should be next to on the page. */
+        float: left;
+        margin-right: .5em;
+    }
+
+    .clear { /* this class can be placed on an element or empty div as the final element following the last floated div */
+        clear: both;
+    }
+
+    /*input[type="radio"] {}*/
+    /*input[type="submit"] {}*/
+
+    label {
+        display: block;
+    }
+
+    input {
+        display: block;
+    }
+}
