@@ -5,8 +5,7 @@
     <meta charset="utf-8"><!--character encoding for the document (Unicode) -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Final Year Project</title><!--web page title -->
-    <link href="Login_page.css" rel="stylesheet" />
-    <link href="normalize.css" rel="stylesheet" />
+    <link href="css/Login_page.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Strait" rel="stylesheet">
 
     <style>
@@ -21,24 +20,88 @@
 </head>
 <body>
     <!--Markup all web page content inside the 'body' tags -->
-    <div class="center">
+    <div id="authForm" class="center">
         <h1>Login</h1>
         <form method="post">
             <div class="txt_field">
-                <input type="email" id="email_login" placeholder="Email Address">
+                <input type="email" id="userEmail" placeholder="Email Address">
                 <span></span>
             </div>
             <div class="txt_field">
-                <input type="password" id="pwd_login" placeholder="Password">
+                <input type="password" id="userPassword" placeholder="Password">
                 <span></span>
             </div>
             <div class="pass">Forgot Password?</div>
-            <input type="submit" value="Login">
+            <button id="logInButton">Login</button>
             <div class="signup_link">
                 Not a member? <a href="register.html">Sign Up</a>
             </div>
         </form>
     </div>
+
+    <div id="secretContent">
+        <h2>This is top secret information!</h2>
+        <button id="signOutButton">Sign Out</button>
+
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAJAxFD46Lh2p-0OtOig0Y_bkHDDmniK1Y",
+          authDomain: "bravosixrecruiters.firebaseapp.com",
+          databaseURL: "https://bravosixrecruiters-default-rtdb.firebaseio.com",
+          projectId: "bravosixrecruiters",
+          storageBucket: "bravosixrecruiters.appspot.com",
+          messagingSenderId: "720453785669",
+          appId: "1:720453785669:web:414c75c6c66b2d8e99ab2c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const userEmail = document.querySelector("#userEmail");
+        const userPassword = document.querySelector("#userPassword");
+        const authForm = document.querySelector("#authForm");
+        const secretContent = document.querySelector("#secretContent");
+        const logInButton = document.querySelector("#logInButton");
+        const signOutButton = document.querySelector("#signOutButton");
+
+        secretContent.style.display = 'none';
+
+        const userSignUp = async() => {
+            const signUpEmail = userEmail.value;
+            const signUpPassword = userPassword.value;
+            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+                alert("Your account has been created!")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode + errorMessage);
+            })
+        }
+
+
+
+
+      </script>
 
 
 
